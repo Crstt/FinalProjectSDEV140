@@ -397,40 +397,54 @@ def defineGame():
 def endScreen(player):
     global winImg, endScreenW
 
+    # Hide root window
     root.withdraw()
 
+    # Create new window for end screen
     endScreenW = Toplevel(root)
     endScreenW.title("End screen")
 
+    #Creates win lable
     wPlayer = Label(endScreenW, text = playersName[player]+" won in "+str(turn)+" turns!", font=("Arial", 25))
     wPlayer.grid(row = 0, column=0, columnspan=2)
 
+    #Creates images
     winImg = PhotoImage(file = "winnerWinnerChickenDinner.gif")
     image = Label(endScreenW, image=winImg, text="Win Image")
     image.grid(row = 1, column=0, columnspan=2)
 
+    #Creates restart button
     restartGameBtn = Button(endScreenW, text="Restart", command=restartGame,width=(defaultW*2))
     restartGameBtn.grid(row = 2, column=0, columnspan=1)
 
+    #Creates Exit button
     quitBtn = Button(endScreenW, text="Exit", command=quit,width=(defaultW*2))
     quitBtn.grid(row = 2, column=1, columnspan=1)
 
 def restartGame():
     global nPlayers, playersName, playerIconlLbl, playerNamelLbl, lastMoveLbl
+    
+    #Sets global variables to default values
     nPlayers = 2
     playersName = ["","","",""]
     for i in range(4):
+        #destroyes player description on root window
         playerIconlLbl[i].destroy()
         playerNamelLbl[i].destroy()
 
+    #destroyes end screen window
     endScreenW.destroy()
+    #destroyes turn description lable on root window
     lastMoveLbl.destroy()
+    #opens player select windows to start the game again
     openPlayerSelectW()
     
 #definitions
 root = Tk()
 root.title("Sorrier Than Ever")
 
+#opens player select windows to start the game
 openPlayerSelectW()
 
+#Tkinter main loop
 root.mainloop()

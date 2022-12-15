@@ -119,6 +119,7 @@ def swap(player, swappedPlayer):
     move(player, swapPos)
     move(swappedPlayer, playerPos)
 
+
 def move(player, pos):
     # check if the new position is greater than 50
     if pos> 50:        
@@ -195,6 +196,7 @@ def dieRoll():
     
     # Return list of integers
     return [d1, d2]
+
 
 def turnDecision(player, double): #return true if it should skip a turn
 
@@ -319,7 +321,6 @@ def openPlayerSelectW():
     # Create addPlayerBtn and startGameBtn buttons
     addPlayerBtn = Button(playerSelectW, text="Add Player", command=addPlayer,width=(defaultW*2))
     addPlayerBtn.grid(row = 6, column=1, columnspan=1)
-
     startGameBtn = Button(playerSelectW, text="Start!", command=startGame,width=(defaultW*2))
     startGameBtn.grid(row = 6, column=2, columnspan=1)
     # Bring playerSelectW window to front
@@ -427,10 +428,13 @@ def restartGame():
     lastMoveLbl.destroy()
     openPlayerSelectW()
     
+
 #definitions
 root = Tk()
 root.title("Sorrier Than Ever")
+#root.resizable(width=False, height=False)
 
 openPlayerSelectW()
+
 
 root.mainloop()
